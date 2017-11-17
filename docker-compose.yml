@@ -1,21 +1,20 @@
-version: "3.3"
-
-services:
-  caddy:
-
-    build:
-      context: ./caddy
-
-    restart: always
-
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:2015"]
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
-
-    network_mode: "host"
-
-    volumes:
-      - ./caddy/mnt:/mnt
+version: "3.4" 
+ 
+services: 
+  caddy: 
+    build: 
+      context: ./caddy 
+    image: pandailan/caddy 
+    restart: always 
+ 
+    healthcheck: 
+      test: ["CMD", "curl", "-f", "http://localhost:2015"] 
+      interval: 5m00s 
+      timeout: 10s 
+      retries: 3 
+ 
+    network_mode: "host" 
+ 
+    volumes: 
+      - ./caddy/mnt:/mnt 
       - ./caddy/certs:/root/.caddy
